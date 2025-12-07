@@ -1,19 +1,16 @@
 package vue;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import controleur.Controle;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import controleur.Controle;
 
 public class EntreeJeu extends JFrame {
 
@@ -49,7 +46,7 @@ public class EntreeJeu extends JFrame {
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controle.btnStart_clic();
+				controle.evenementEntreeJeu("serveur");
 			}
 		});
 		btnStart.setBounds(194, 6, 84, 20);
@@ -58,7 +55,7 @@ public class EntreeJeu extends JFrame {
 		JButton btnConnect = new JButton("Connect");
 		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controle.btnConnect_clic();
+				controle.evenementEntreeJeu(getTxtlp().getText());
 			}
 		});
 		btnConnect.setBounds(194, 54, 84, 20);
@@ -73,11 +70,17 @@ public class EntreeJeu extends JFrame {
 		btnExit.setBounds(194, 92, 84, 20);
 		contentPane.add(btnExit);
 		
-		txtlp = new JTextField();
-		txtlp.setText("127.0.0.1");
-		txtlp.setBounds(63, 54, 121, 18);
-		contentPane.add(txtlp);
-		txtlp.setColumns(10);
+		setTxtlp(new JTextField());
+		getTxtlp().setText("127.0.0.1");
+		getTxtlp().setBounds(63, 54, 121, 18);
+		contentPane.add(getTxtlp());
+		getTxtlp().setColumns(10);
 
+	}
+	public JTextField getTxtlp() {
+		return txtlp;
+	}
+	public void setTxtlp(JTextField txtlp) {
+		this.txtlp = txtlp;
 	}
 }
